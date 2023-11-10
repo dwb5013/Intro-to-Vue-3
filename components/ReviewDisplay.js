@@ -15,6 +15,8 @@ app.component('review-display', {
                 {{ review.name }} gave this {{ review.rating }} stars
                 <br>
                 <p>{{ review.review }}</p>
+                <br>
+                {{review.recommend  === 'yes' ? "I would recommend this product" : "I would not recommend this product"}}
             </li>
         </ul>
         </div>

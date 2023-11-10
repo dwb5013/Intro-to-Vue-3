@@ -15,18 +15,11 @@ app.component('review-form', {
             <option>2</option>
             <option>1</option>
         </select>
-        <fieldset>
-            <legend>Would you recommend this product?:</legend>
-            <div>
-              <input type="radio" id="yes" name="qa" value="true" v-model="wouldRecommend" checked />
-              <label for="yes">Yes</label>
-            </div>
-
-            <div>
-              <input type="radio" id="no" name="qa" value="false" v-model="wouldRecommend" />
-              <label for="no">No</label>
-            </div>
-        </fieldset>
+        <label for="recommend">Would you recommend this product?:</label>
+        <select id="recommend" v-model="recommend">
+            <option>yes</option>
+            <option>no</option>
+        </select>
         <input class="button" type="submit" value="Submit">
     </form>
     `,
@@ -34,7 +27,8 @@ app.component('review-form', {
         return {
             name: '',
             review: '',
-            rating: null
+            rating: null,
+            recommend: null
         }
     },
     methods:
@@ -44,9 +38,9 @@ app.component('review-form', {
                 name: this.name,
                 review: this.review,
                 rating: this.rating,
-                wouldRecommend: null
+                recommend: this.recommend
             }
-            if (this.name === '' || this.review === '' || this.rating === null || wouldRecommend === null) {
+            if (this.name === '' || this.review === '' || this.rating === null || this.recommend === null) {
                 alert("Review is incomplete. Please fill out every field.")
                 return
             }
@@ -54,7 +48,7 @@ app.component('review-form', {
             this.name = ''
             this.review = ''
             this.rating = null
-            wouldRecommend = null
+            this.recommend = null
         },
     }
 })
